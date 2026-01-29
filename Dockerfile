@@ -5,7 +5,7 @@
 # ============================================
 # Stage 1: Dependencies
 # ============================================
-FROM node:20-alpine AS deps
+FROM node:20-alpine AS base
 WORKDIR /app
 
 # Install dependencies only when needed
