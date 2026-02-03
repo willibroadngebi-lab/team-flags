@@ -1,10 +1,11 @@
  HEAD
  Use Node.js 20 Alpine as base
-FROM node:20-alpine
-=======
+FROM node:20-alpinenano Dockerfile
+
 # Team Flags EDU - Production-Grade Dockerfile
 # Multi-stage build for optimal image size and security
 # This Dockerfile demonstrates DevSecOps best practices
+ HEAD
 #
 # Week 3: Docker Compose - This image works with docker-compose.yml
 # Week 5+: Add Firebase credentials for authentication features
@@ -14,6 +15,13 @@ FROM node:20-alpine
  upstream/main
 
 # Set working directory
+
+
+# ============================================
+# Stage 1: Dependencies
+# ============================================
+FROM node:20-alpine AS base
+ 85f243cf26d653cbc0b7225f8a6b381580276ef5
 WORKDIR /app
 
 # Copy package files
@@ -25,12 +33,12 @@ RUN npm ci --only=production
 # Copy application files
 COPY . .
 
-<<<<<<< HEAD
+ HEAD
 
 # Copy service account and env file
 COPY service-account.json ./
 COPY .env.production ./
-=======
+
 # Set production environment
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -60,7 +68,7 @@ RUN apk add --no-cache wget
 # Running as root is a security risk
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
->>>>>>> upstream/main
+ upstream/main
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -72,10 +80,10 @@ RUN npm run build
 # Expose port
 EXPOSE 3000
 
-<<<<<<< HEAD
+ HEAD
 # Start the application
 CMD ["npm", "start"]
-=======
+
 # Set hostname to allow external connections
 ENV HOSTNAME="0.0.0.0"
 ENV PORT=3000
@@ -86,5 +94,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
 
 # Start the Next.js application
 # Standalone mode uses server.js directly
-CMD ["node", "server.js"]
->>>>>>> upstream/main
+CMD ["node", "server.js"] upstream/main
